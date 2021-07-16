@@ -1,0 +1,46 @@
+<%-- any content can be specified here e.g.: --%>
+<!-- Heade fragment of login page-->
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WEB Book</title>
+        <link href="${pageContext.request.contextPath}/css/fragmentCSS/headerCSS.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/fragmentCSS/menu.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+
+    <body >
+        <div class="container-fluid">
+            <div class="row">
+                <header class="col-12">
+                    <div class="header__row">
+                        <div class="header__logo">
+                            <img src="${pageContext.request.contextPath}/images/search.PNG" alt="Search image" class="searchImage"> 
+                        </div>
+                        <div class="header_logo_text">
+                            <strong class="findLable">WebBook</strong>
+                        </div>
+                        <div class="header_search_logo">
+
+                            <form name="loginform" action="${pageContext.request.contextPath}/Login" method="POST">
+                                <span class="findLable">Sing In</span>
+                                <input type="email" class="active-cyan-4" style="border-radius: 5px;" placeholder="Email" name="userEmail" size="20" required> 
+                                <input type="password" class="active-cyan-4" style="border-radius: 5px;" placeholder="Password" name="userPassword" size="20" required>
+                                <input type="submit" class="btn btn-primary btn-sm" value="Log in" />
+                                <c:if test="${not empty sessionScope.errorMessage}">
+                                    <p class="passwordErrorStyle">${sessionScope.errorMessage}</p>  
+                                    <c:remove var="errorMessage" scope="session" />
+                                </c:if>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </header>
+
+            </div>

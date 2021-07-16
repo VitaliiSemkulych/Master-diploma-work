@@ -1,0 +1,22 @@
+<%-- any content can be specified here e.g.: --%>
+<!-- Fragment with letters-->
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div class="row">
+    <div  style="background-color: #e8e8e8;" class="col-12" th:fragment="letterPanel">  
+        <div style="margin-left: 15%;" class="nav">
+            <c:forEach var="singleLetter" items="${sessionScope.letterList}">
+                <c:choose>
+                    <c:when test="${(not empty sessionScope.letter)and (sessionScope.letter eq singleLetter)}">   
+                        <a class="nav-link disabled" href="${pageContext.request.contextPath}/SearchServlet?letter=${singleLetter}">${singleLetter}</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="nav-link singleLetter" href="${pageContext.request.contextPath}/SearchServlet?letter=${singleLetter}">${singleLetter}</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </div>
+    </div>
+</div>
+
